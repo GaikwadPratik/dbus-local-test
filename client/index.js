@@ -29,10 +29,10 @@ async function generator() {
 }
 
 async function Main() {
-  await Promise.all(
+  await Promise.all([
     hardcoded().catch(err => console.error(err, "from hardcoded")),
     generator().catch(err => console.error(err, "from generator"))
-  )
+  ])
 }
 
 Main()
