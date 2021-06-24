@@ -7,8 +7,9 @@ async function hardcoded() {
     const objectPath = "/com/hiveio/vmmanagerhardcoded";
     const bus = dbus.systemBus();
     const proxyObject = await bus.getProxyObject(serviceName, objectPath);
-    proxyObject.getInterface(interfaceName)
-    console.log("hardcoded worked");
+    obj = proxyObject.getInterface(interfaceName)
+    const c = await obj.CheckHostForMigration("test", "test")
+    console.log("hardcoded worked", c);
   } catch (err) {
     console.error(err, "Inside hardcoded")
   }
@@ -22,7 +23,8 @@ async function generator() {
     const bus = dbus.systemBus();
     const proxyObject = await bus.getProxyObject(serviceName, objectPath);
     proxyObject.getInterface(interfaceName)
-    console.log("generator worked");
+    const c = await obj.CheckHostForMigration("test", "test")
+    console.log("generator worked", c);
   } catch (err) {
     console.error(err, "Inside generator")
   }
