@@ -22,11 +22,11 @@ func main() {
 }
 
 func hardcoded() error {
-	const serviceName = "com.hiveio.vmmanager1"
-	const objectPath = "/com/hiveio/vmmanager1"
+	const serviceName = "com.hiveio.vmmanagerhardcoded"
+	const objectPath = "/com/hiveio/vmmanagerhardcoded"
 	const intro = `
 <node>
-	<interface name="com.hiveio.vm.Manager1">
+	<interface name="com.hiveio.vm.Managerhardcoded">
 		<method name="CheckHostForMigration">
 			<arg direction="in" type="s"/>
 			<arg direction="in" type="s"/>

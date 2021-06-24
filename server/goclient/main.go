@@ -21,8 +21,8 @@ func main() {
 }
 
 func clientHardcodedCall() error {
-	const DEST = "com.hiveio.vmmanager1"
-	const DBUS_OBJECT_PATH = dbus.ObjectPath("/com/hiveio/vmmanager1")
+	const DEST = "com.hiveio.vmmanagerhardcoded"
+	const DBUS_OBJECT_PATH = dbus.ObjectPath("/com/hiveio/vmmanagerhardcoded")
 	conn, err := dbus.SystemBus()
 
 	if err != nil {

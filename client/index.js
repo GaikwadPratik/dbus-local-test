@@ -2,9 +2,9 @@ const dbus = require("dbus-next")
 
 async function hardcoded() {
   try {
-    const serviceName = "com.hiveio.vmmanager1";
-    const interfaceName = "com.hiveio.vm.Manager1";
-    const objectPath = "/com/hiveio/vmmanager1";
+    const serviceName = "com.hiveio.vmmanagerhardcoded";
+    const interfaceName = "com.hiveio.vm.Managerhardcoded";
+    const objectPath = "/com/hiveio/vmmanagerhardcoded";
     const bus = dbus.systemBus();
     const proxyObject = await bus.getProxyObject(serviceName, objectPath);
     proxyObject.getInterface(interfaceName)
