@@ -7,12 +7,11 @@ import (
 
 // Interface name constants.
 const (
-	InterfaceCom_Hiveio_Vm_Manager               = "com.hiveio.vm.Manager"
-	InterfaceOrg_Freedesktop_DBus_Introspectable = "org.freedesktop.DBus.Introspectable"
+	InterfaceComHiveioVmManager = "com.hiveio.vm.Manager"
 )
 
-// Com_Hiveio_Vm_Managerer is com.hiveio.vm.Manager interface.
-type Com_Hiveio_Vm_Managerer interface {
+// ComHiveioVmManagerer is com.hiveio.vm.Manager interface.
+type ComHiveioVmManagerer interface {
 	// CheckHostForMigration is com.hiveio.vm.Manager.CheckHostForMigration method.
 	CheckHostForMigration(guestName string, cpuxml string) (result bool, err *dbus.Error)
 	// RecoverGuest is com.hiveio.vm.Manager.RecoverGuest method.
@@ -21,68 +20,38 @@ type Com_Hiveio_Vm_Managerer interface {
 	RecoverUservolume(guestName string, username string) (err *dbus.Error)
 }
 
-// ExportCom_Hiveio_Vm_Manager exports the given object that implements com.hiveio.vm.Manager on the bus.
-func ExportCom_Hiveio_Vm_Manager(conn *dbus.Conn, path dbus.ObjectPath, v Com_Hiveio_Vm_Managerer) error {
+// ExportComHiveioVmManager exports the given object that implements com.hiveio.vm.Manager on the bus.
+func ExportComHiveioVmManager(conn *dbus.Conn, path dbus.ObjectPath, v ComHiveioVmManagerer) error {
 	return conn.ExportSubtreeMethodTable(map[string]interface{}{
 		"CheckHostForMigration": v.CheckHostForMigration,
 		"RecoverGuest":          v.RecoverGuest,
 		"RecoverUservolume":     v.RecoverUservolume,
-	}, path, InterfaceCom_Hiveio_Vm_Manager)
+	}, path, InterfaceComHiveioVmManager)
 }
 
-// UnexportCom_Hiveio_Vm_Manager unexports com.hiveio.vm.Manager interface on the named path.
-func UnexportCom_Hiveio_Vm_Manager(conn *dbus.Conn, path dbus.ObjectPath) error {
-	return conn.Export(nil, path, InterfaceCom_Hiveio_Vm_Manager)
+// UnexportComHiveioVmManager unexports com.hiveio.vm.Manager interface on the named path.
+func UnexportComHiveioVmManager(conn *dbus.Conn, path dbus.ObjectPath) error {
+	return conn.Export(nil, path, InterfaceComHiveioVmManager)
 }
 
-// UnimplementedCom_Hiveio_Vm_Manager can be embedded to have forward compatible server implementations.
-type UnimplementedCom_Hiveio_Vm_Manager struct{}
+// UnimplementedComHiveioVmManager can be embedded to have forward compatible server implementations.
+type UnimplementedComHiveioVmManager struct{}
 
-func (*UnimplementedCom_Hiveio_Vm_Manager) iface() string {
-	return InterfaceCom_Hiveio_Vm_Manager
+func (*UnimplementedComHiveioVmManager) iface() string {
+	return InterfaceComHiveioVmManager
 }
 
-func (*UnimplementedCom_Hiveio_Vm_Manager) CheckHostForMigration(guestName string, cpuxml string) (result bool, err *dbus.Error) {
+func (*UnimplementedComHiveioVmManager) CheckHostForMigration(guestName string, cpuxml string) (result bool, err *dbus.Error) {
 	err = &dbus.ErrMsgUnknownMethod
 	return
 }
 
-func (*UnimplementedCom_Hiveio_Vm_Manager) RecoverGuest(guestName string, reason string) (err *dbus.Error) {
+func (*UnimplementedComHiveioVmManager) RecoverGuest(guestName string, reason string) (err *dbus.Error) {
 	err = &dbus.ErrMsgUnknownMethod
 	return
 }
 
-func (*UnimplementedCom_Hiveio_Vm_Manager) RecoverUservolume(guestName string, username string) (err *dbus.Error) {
-	err = &dbus.ErrMsgUnknownMethod
-	return
-}
-
-// Org_Freedesktop_DBus_Introspectableer is org.freedesktop.DBus.Introspectable interface.
-type Org_Freedesktop_DBus_Introspectableer interface {
-	// Introspect is org.freedesktop.DBus.Introspectable.Introspect method.
-	Introspect() (out string, err *dbus.Error)
-}
-
-// ExportOrg_Freedesktop_DBus_Introspectable exports the given object that implements org.freedesktop.DBus.Introspectable on the bus.
-func ExportOrg_Freedesktop_DBus_Introspectable(conn *dbus.Conn, path dbus.ObjectPath, v Org_Freedesktop_DBus_Introspectableer) error {
-	return conn.ExportSubtreeMethodTable(map[string]interface{}{
-		"Introspect": v.Introspect,
-	}, path, InterfaceOrg_Freedesktop_DBus_Introspectable)
-}
-
-// UnexportOrg_Freedesktop_DBus_Introspectable unexports org.freedesktop.DBus.Introspectable interface on the named path.
-func UnexportOrg_Freedesktop_DBus_Introspectable(conn *dbus.Conn, path dbus.ObjectPath) error {
-	return conn.Export(nil, path, InterfaceOrg_Freedesktop_DBus_Introspectable)
-}
-
-// UnimplementedOrg_Freedesktop_DBus_Introspectable can be embedded to have forward compatible server implementations.
-type UnimplementedOrg_Freedesktop_DBus_Introspectable struct{}
-
-func (*UnimplementedOrg_Freedesktop_DBus_Introspectable) iface() string {
-	return InterfaceOrg_Freedesktop_DBus_Introspectable
-}
-
-func (*UnimplementedOrg_Freedesktop_DBus_Introspectable) Introspect() (out string, err *dbus.Error) {
+func (*UnimplementedComHiveioVmManager) RecoverUservolume(guestName string, username string) (err *dbus.Error) {
 	err = &dbus.ErrMsgUnknownMethod
 	return
 }

@@ -8,50 +8,50 @@ import (
 
 // Interface name constants.
 const (
-	InterfaceCom_Hiveio_Vm_Manager               = "com.hiveio.vm.Manager"
-	InterfaceOrg_Freedesktop_DBus_Introspectable = "org.freedesktop.DBus.Introspectable"
+	InterfaceComHiveioVmManager               = "com.hiveio.vm.Manager"
+	InterfaceOrgFreedesktopDBusIntrospectable = "org.freedesktop.DBus.Introspectable"
 )
 
-// NewCom_Hiveio_Vm_Manager creates and allocates com.hiveio.vm.Manager.
-func NewCom_Hiveio_Vm_Manager(object dbus.BusObject) *Com_Hiveio_Vm_Manager {
-	return &Com_Hiveio_Vm_Manager{object}
+// NewComHiveioVmManager creates and allocates com.hiveio.vm.Manager.
+func NewComHiveioVmManager(object dbus.BusObject) *ComHiveioVmManager {
+	return &ComHiveioVmManager{object}
 }
 
-// Com_Hiveio_Vm_Manager implements com.hiveio.vm.Manager D-Bus interface.
-type Com_Hiveio_Vm_Manager struct {
+// ComHiveioVmManager implements com.hiveio.vm.Manager D-Bus interface.
+type ComHiveioVmManager struct {
 	object dbus.BusObject
 }
 
 // CheckHostForMigration calls com.hiveio.vm.Manager.CheckHostForMigration method.
-func (o *Com_Hiveio_Vm_Manager) CheckHostForMigration(ctx context.Context, guestName string, cpuxml string) (result bool, err error) {
-	err = o.object.CallWithContext(ctx, InterfaceCom_Hiveio_Vm_Manager+".CheckHostForMigration", 0, guestName, cpuxml).Store(&result)
+func (o *ComHiveioVmManager) CheckHostForMigration(ctx context.Context, guestName string, cpuxml string) (result bool, err error) {
+	err = o.object.CallWithContext(ctx, InterfaceComHiveioVmManager+".CheckHostForMigration", 0, guestName, cpuxml).Store(&result)
 	return
 }
 
 // RecoverGuest calls com.hiveio.vm.Manager.RecoverGuest method.
-func (o *Com_Hiveio_Vm_Manager) RecoverGuest(ctx context.Context, guestName string, reason string) (err error) {
-	err = o.object.CallWithContext(ctx, InterfaceCom_Hiveio_Vm_Manager+".RecoverGuest", 0, guestName, reason).Store()
+func (o *ComHiveioVmManager) RecoverGuest(ctx context.Context, guestName string, reason string) (err error) {
+	err = o.object.CallWithContext(ctx, InterfaceComHiveioVmManager+".RecoverGuest", 0, guestName, reason).Store()
 	return
 }
 
 // RecoverUservolume calls com.hiveio.vm.Manager.RecoverUservolume method.
-func (o *Com_Hiveio_Vm_Manager) RecoverUservolume(ctx context.Context, guestName string, username string) (err error) {
-	err = o.object.CallWithContext(ctx, InterfaceCom_Hiveio_Vm_Manager+".RecoverUservolume", 0, guestName, username).Store()
+func (o *ComHiveioVmManager) RecoverUservolume(ctx context.Context, guestName string, username string) (err error) {
+	err = o.object.CallWithContext(ctx, InterfaceComHiveioVmManager+".RecoverUservolume", 0, guestName, username).Store()
 	return
 }
 
-// NewOrg_Freedesktop_DBus_Introspectable creates and allocates org.freedesktop.DBus.Introspectable.
-func NewOrg_Freedesktop_DBus_Introspectable(object dbus.BusObject) *Org_Freedesktop_DBus_Introspectable {
-	return &Org_Freedesktop_DBus_Introspectable{object}
+// NewOrgFreedesktopDBusIntrospectable creates and allocates org.freedesktop.DBus.Introspectable.
+func NewOrgFreedesktopDBusIntrospectable(object dbus.BusObject) *OrgFreedesktopDBusIntrospectable {
+	return &OrgFreedesktopDBusIntrospectable{object}
 }
 
-// Org_Freedesktop_DBus_Introspectable implements org.freedesktop.DBus.Introspectable D-Bus interface.
-type Org_Freedesktop_DBus_Introspectable struct {
+// OrgFreedesktopDBusIntrospectable implements org.freedesktop.DBus.Introspectable D-Bus interface.
+type OrgFreedesktopDBusIntrospectable struct {
 	object dbus.BusObject
 }
 
 // Introspect calls org.freedesktop.DBus.Introspectable.Introspect method.
-func (o *Org_Freedesktop_DBus_Introspectable) Introspect(ctx context.Context) (out string, err error) {
-	err = o.object.CallWithContext(ctx, InterfaceOrg_Freedesktop_DBus_Introspectable+".Introspect", 0).Store(&out)
+func (o *OrgFreedesktopDBusIntrospectable) Introspect(ctx context.Context) (out string, err error) {
+	err = o.object.CallWithContext(ctx, InterfaceOrgFreedesktopDBusIntrospectable+".Introspect", 0).Store(&out)
 	return
 }

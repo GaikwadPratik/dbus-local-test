@@ -48,7 +48,7 @@ func hardcoded() error {
 	}
 
 	iface := VMManagerDbusInterface{}
-	conn.Export(iface, objectPath, "com.hiveio.vm.Manager1")
+	conn.Export(iface, objectPath, "com.hiveio.vm.Managerhardcoded")
 	conn.Export(introspect.Introspectable(intro), objectPath, "org.freedesktop.DBus.Introspectable")
 
 	reply, err := conn.RequestName(serviceName, dbus.NameFlagDoNotQueue)
@@ -66,8 +66,8 @@ func hardcoded() error {
 
 func generator() error {
 
-	const DBUS_SERVICE_NAME = "com.hiveio.vmmanager"
-	const DBUS_OBJECT_PATH = dbus.ObjectPath("/com/hiveio/vmmanager")
+	const serviceName = "com.hiveio.vmmanager"
+	const objectPath = dbus.ObjectPath("/com/hiveio/vmmanager")
 
 	conn, err := dbus.SystemBus()
 	if err != nil {
@@ -75,13 +75,13 @@ func generator() error {
 		return err
 	}
 	iface := VMManagerDbusInterface{}
-	err = ExportCom_Hiveio_Vm_Manager(conn, DBUS_OBJECT_PATH, iface)
+	err = ExportComHiveioVmManager(conn, objectPath, iface)
 	if err != nil {
 		log.Error().Err(err).Stack().Msg("While exporting dbus interface")
 		return err
 	}
 
-	reply, err := conn.RequestName(DBUS_SERVICE_NAME, dbus.NameFlagDoNotQueue)
+	reply, err := conn.RequestName(serviceName, dbus.NameFlagDoNotQueue)
 	if err != nil {
 		log.Error().Err(err).Stack().Msg("While checking name on system bus in initiateServer")
 		return err
@@ -91,7 +91,7 @@ func generator() error {
 		return errors.New("name already taken")
 	}
 
-	log.Info().Msg(fmt.Sprintf("Listening on %s - %s ...", DBUS_SERVICE_NAME, DBUS_OBJECT_PATH))
+	log.Info().Msg(fmt.Sprintf("Listening on %s - %s ...", serviceName, objectPath))
 	select {}
 
 }

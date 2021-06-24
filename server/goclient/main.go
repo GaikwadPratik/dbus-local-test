@@ -32,7 +32,7 @@ func clientHardcodedCall() error {
 
 	demoObject := conn.Object(DEST, DBUS_OBJECT_PATH)
 
-	obj := NewCom_Hiveio_Vm_Manager(demoObject)
+	obj := NewComHiveioVmManager(demoObject)
 
 	val, err := obj.CheckHostForMigration(context.Background(), "test", "test")
 
@@ -58,7 +58,7 @@ func generatorCall() error {
 
 	demoObject := conn.Object(DEST, DBUS_OBJECT_PATH)
 
-	obj := NewCom_Hiveio_Vm_Manager(demoObject)
+	obj := NewComHiveioVmManager(demoObject)
 
 	val, err := obj.CheckHostForMigration(context.Background(), "test", "test")
 
