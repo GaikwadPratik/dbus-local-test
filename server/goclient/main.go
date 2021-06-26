@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	go clientHardcodedCall()
+	go clientManualCall()
 	go generatorCall()
 
 	quitChannel := make(chan os.Signal, 1)
@@ -20,9 +20,9 @@ func main() {
 	log.Warn().Msg("Adios!")
 }
 
-func clientHardcodedCall() error {
-	const DEST = "com.hiveio.vmmanagerhardcoded"
-	const DBUS_OBJECT_PATH = dbus.ObjectPath("/com/hiveio/vmmanagerhardcoded")
+func clientManualCall() error {
+	DEST := "com.hiveio.vmmanagerhardcoded"
+	DBUS_OBJECT_PATH := dbus.ObjectPath("/com/hiveio/vmmanagerhardcoded")
 	conn, err := dbus.SystemBus()
 
 	if err != nil {
@@ -32,17 +32,23 @@ func clientHardcodedCall() error {
 
 	demoObject := conn.Object(DEST, DBUS_OBJECT_PATH)
 
-	obj := NewComHiveioVmManager(demoObject)
-
-	val, err := obj.CheckHostForMigration(context.Background(), "test", "test")
-
+	var val bool
+	err = demoObject.CallWithContext(context.Background(), "CheckHostForMigration", 0, "test", "test").Store(&val)
 	if err != nil {
 		log.Error().Err(err).Msg("While checking host for migration in hardcoded call")
 		return err
 	}
+	log.Debug().Bool("val", val).Msg("Recived response in hardcoded manual call")
 
-	log.Debug().Bool("val", val).Msg("Recived response in hardcoded call")
-
+	DEST = "com.hiveio.vmmanager"
+	DBUS_OBJECT_PATH = dbus.ObjectPath("/com/hiveio/vmmanager")
+	demoObject = conn.Object(DEST, DBUS_OBJECT_PATH)
+	err = demoObject.CallWithContext(context.Background(), "CheckHostForMigration", 0, "test", "test").Store(&val)
+	if err != nil {
+		log.Error().Err(err).Msg("While checking host for migration in generated call")
+		return err
+	}
+	log.Debug().Bool("val", val).Msg("Recived response in generator manual call")
 	return nil
 }
 
@@ -58,7 +64,7 @@ func generatorCall() error {
 
 	demoObject := conn.Object(DEST, DBUS_OBJECT_PATH)
 
-	obj := NewComHiveioVmManager(demoObject)
+	obj := NewComHiveioVmmanager(demoObject)
 
 	val, err := obj.CheckHostForMigration(context.Background(), "test", "test")
 

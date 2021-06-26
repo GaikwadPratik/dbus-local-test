@@ -1,5 +1,5 @@
 <node>
-  <interface name="com.hiveio.vm.Manager">
+  <interface name="com.hiveio.vmmanager">
     <method name="CheckHostForMigration">
       <arg name="guestName" direction="in" type="s"/>
       <arg name="cpuxml" direction="in" type="s"/>

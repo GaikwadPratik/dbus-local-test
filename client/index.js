@@ -3,7 +3,7 @@ const dbus = require("dbus-next")
 async function hardcoded() {
   try {
     const serviceName = "com.hiveio.vmmanagerhardcoded";
-    const interfaceName = "com.hiveio.vm.Managerhardcoded";
+    const interfaceName = "com.hiveio.vmmanagerhardcoded";
     const objectPath = "/com/hiveio/vmmanagerhardcoded";
     const bus = dbus.systemBus();
     const proxyObject = await bus.getProxyObject(serviceName, objectPath);
@@ -18,7 +18,7 @@ async function hardcoded() {
 async function generator() {
   try {
     const serviceName = "com.hiveio.vmmanager";
-    const interfaceName = "com.hiveio.vm.Manager";
+    const interfaceName = "com.hiveio.vmmanager";
     const objectPath = "/com/hiveio/vmmanager";
     const bus = dbus.systemBus();
     const proxyObject = await bus.getProxyObject(serviceName, objectPath);

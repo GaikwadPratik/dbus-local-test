@@ -8,35 +8,35 @@ import (
 
 // Interface name constants.
 const (
-	InterfaceComHiveioVmManager               = "com.hiveio.vm.Manager"
+	InterfaceComHiveioVmmanager               = "com.hiveio.vmmanager"
 	InterfaceOrgFreedesktopDBusIntrospectable = "org.freedesktop.DBus.Introspectable"
 )
 
-// NewComHiveioVmManager creates and allocates com.hiveio.vm.Manager.
-func NewComHiveioVmManager(object dbus.BusObject) *ComHiveioVmManager {
-	return &ComHiveioVmManager{object}
+// NewComHiveioVmmanager creates and allocates com.hiveio.vmmanager.
+func NewComHiveioVmmanager(object dbus.BusObject) *ComHiveioVmmanager {
+	return &ComHiveioVmmanager{object}
 }
 
-// ComHiveioVmManager implements com.hiveio.vm.Manager D-Bus interface.
-type ComHiveioVmManager struct {
+// ComHiveioVmmanager implements com.hiveio.vmmanager D-Bus interface.
+type ComHiveioVmmanager struct {
 	object dbus.BusObject
 }
 
-// CheckHostForMigration calls com.hiveio.vm.Manager.CheckHostForMigration method.
-func (o *ComHiveioVmManager) CheckHostForMigration(ctx context.Context, guestName string, cpuxml string) (result bool, err error) {
-	err = o.object.CallWithContext(ctx, InterfaceComHiveioVmManager+".CheckHostForMigration", 0, guestName, cpuxml).Store(&result)
+// CheckHostForMigration calls com.hiveio.vmmanager.CheckHostForMigration method.
+func (o *ComHiveioVmmanager) CheckHostForMigration(ctx context.Context, guestName string, cpuxml string) (result bool, err error) {
+	err = o.object.CallWithContext(ctx, InterfaceComHiveioVmmanager+".CheckHostForMigration", 0, guestName, cpuxml).Store(&result)
 	return
 }
 
-// RecoverGuest calls com.hiveio.vm.Manager.RecoverGuest method.
-func (o *ComHiveioVmManager) RecoverGuest(ctx context.Context, guestName string, reason string) (err error) {
-	err = o.object.CallWithContext(ctx, InterfaceComHiveioVmManager+".RecoverGuest", 0, guestName, reason).Store()
+// RecoverGuest calls com.hiveio.vmmanager.RecoverGuest method.
+func (o *ComHiveioVmmanager) RecoverGuest(ctx context.Context, guestName string, reason string) (err error) {
+	err = o.object.CallWithContext(ctx, InterfaceComHiveioVmmanager+".RecoverGuest", 0, guestName, reason).Store()
 	return
 }
 
-// RecoverUservolume calls com.hiveio.vm.Manager.RecoverUservolume method.
-func (o *ComHiveioVmManager) RecoverUservolume(ctx context.Context, guestName string, username string) (err error) {
-	err = o.object.CallWithContext(ctx, InterfaceComHiveioVmManager+".RecoverUservolume", 0, guestName, username).Store()
+// RecoverUservolume calls com.hiveio.vmmanager.RecoverUservolume method.
+func (o *ComHiveioVmmanager) RecoverUservolume(ctx context.Context, guestName string, username string) (err error) {
+	err = o.object.CallWithContext(ctx, InterfaceComHiveioVmmanager+".RecoverUservolume", 0, guestName, username).Store()
 	return
 }
 
